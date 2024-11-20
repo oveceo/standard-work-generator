@@ -12,7 +12,7 @@ document.getElementById('workForm').addEventListener('submit', async function (e
   resultDiv.innerHTML = 'Generating your Standard Work Document...';
 
   try {
-    const response = await fetch('https://your-backend-url.com/generate', {
+    const response = await fetch('https://standard-work-backend.onrender.com/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
