@@ -70,10 +70,9 @@ form.addEventListener('submit', async (e) => {
       throw new Error('Failed to generate document. Please try again.');
     }
 
+    // Process the response and initiate download
     const blob = await response.blob();
     const url = URL.createObjectURL(blob);
-
-    // Create a link to download the file
     const a = document.createElement('a');
     a.href = url;
     a.download = 'Standard_Work_Document.docx';
@@ -85,7 +84,7 @@ form.addEventListener('submit', async (e) => {
     alert(error.message);
     console.error('Error:', error);
   } finally {
-    // Hide the loading spinner and reset the form
+    // Hide the loading spinner
     loading.style.display = 'none';
     form.reset();
   }
