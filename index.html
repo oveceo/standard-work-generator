@@ -3,46 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Standard Work Document Generator</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Standard Work Generator</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Standard Work Document Generator</h1>
-      <p>Create professional, detailed Standard Work Documents effortlessly.</p>
-    </header>
+  <header>
+    <h1>🌟 Standard Work Document Generator</h1>
+    <p>Generate professional, ready-to-download documents with ease.</p>
+  </header>
 
-    <form id="workForm">
+  <main>
+    <form id="document-form">
       <div class="form-group">
         <label for="purpose">Purpose and Scope</label>
-        <textarea id="purpose" name="purpose" placeholder="Define the purpose and scope of the procedure." required></textarea>
+        <textarea id="purpose" name="purpose" placeholder="Describe the purpose and scope of the document" required></textarea>
       </div>
 
       <div class="form-group">
         <label for="roles">Roles and Responsibilities</label>
-        <textarea id="roles" name="roles" placeholder="List the roles and responsibilities of those involved, e.g., Operator: Execute steps." required></textarea>
+        <textarea id="roles" name="roles" placeholder="List roles and describe their responsibilities" required></textarea>
       </div>
 
       <div class="form-group">
         <label for="safety">Safety</label>
-        <textarea id="safety" name="safety" placeholder="Mention safety concerns, e.g., Wear protective gear." required></textarea>
+        <textarea id="safety" name="safety" placeholder="List safety concerns or measures" required></textarea>
       </div>
 
       <div class="form-group">
         <label for="procedure">Procedure Content</label>
-        <textarea id="procedure" name="procedure" placeholder="Detail each step of the procedure thoroughly." required></textarea>
+        <textarea id="procedure" name="procedure" placeholder="Provide detailed step-by-step instructions" required></textarea>
       </div>
 
       <button type="submit" class="btn">Generate Document</button>
     </form>
 
-    <div id="result" class="result"></div>
-  </div>
+    <section id="output">
+      <h2>Generated Document</h2>
+      <div id="document-output"></div>
+      <button id="download-btn" style="display: none;">Download as Word Document</button>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2024 Your Company Name. All Rights Reserved.</p>
+    <p>Powered only by James Forster | Designed for efficiency</p>
   </footer>
 
   <script src="script.js"></script>
