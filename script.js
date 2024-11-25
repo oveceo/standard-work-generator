@@ -6,7 +6,19 @@ let particlesArray;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Create Constructor Function for Particles
+// Mouse Interaction
+let mouse = {
+  x: null,
+  y: null,
+  radius: (canvas.height / 80) * (canvas.width / 80),
+};
+
+window.addEventListener('mousemove', function(event) {
+  mouse.x = event.x;
+  mouse.y = event.y;
+});
+
+// Create Particle
 function Particle(x, y, directionX, directionY, size, color) {
   this.x = x;
   this.y = y;
@@ -16,46 +28,68 @@ function Particle(x, y, directionX, directionY, size, color) {
   this.color = color;
 }
 
-// Add draw method to particle prototype
+// Draw Method
 Particle.prototype.draw = function() {
   ctx.beginPath();
   ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-  ctx.fillStyle = '#fff';
+  ctx.fillStyle = '#ecf0f1';
   ctx.fill();
 };
 
-// Add update method to particle prototype
+// Update Method
 Particle.prototype.update = function() {
-  if (this.x + this.size > canvas.width || this.x - this.size < 0) {
+  // Check if particle is still within canvas
+  if (this.x > canvas.width || this.x < 0) {
     this.directionX = -this.directionX;
   }
-  if (this.y + this.size > canvas.height || this.y - this.size < 0) {
+  if (this.y > canvas.height || this.y < 0) {
     this.directionY = -this.directionY;
   }
 
+  // Move particle
   this.x += this.directionX;
   this.y += this.directionY;
+
+  // Mouse interaction
+  let dx = mouse.x - this.x;
+  let dy = mouse.y - this.y;
+  let distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (distance < mouse.radius + this.size) {
+    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+      this.x += 10;
+    }
+    if (mouse.x > this.x && this.x > this.size * 10) {
+      this.x -= 10;
+    }
+    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+      this.y += 10;
+    }
+    if (mouse.y > this.y && this.y > this.size * 10) {
+      this.y -= 10;
+    }
+  }
 
   this.draw();
 };
 
-// Create particle array
+// Create Particle Array
 function init() {
   particlesArray = [];
   let numberOfParticles = (canvas.height * canvas.width) / 9000;
   for (let i = 0; i < numberOfParticles; i++) {
-    let size = Math.random() * 2;
+    let size = Math.random() * 2 + 1;
     let x = Math.random() * (innerWidth - size * 2);
     let y = Math.random() * (innerHeight - size * 2);
-    let directionX = (Math.random() * 0.4) - 0.2;
-    let directionY = (Math.random() * 0.4) - 0.2;
-    let color = '#fff';
+    let directionX = (Math.random() * 2) - 1;
+    let directionY = (Math.random() * 2) - 1;
+    let color = '#ecf0f1';
 
     particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
   }
 }
 
-// Animation loop
+// Animation Loop
 function animate() {
   requestAnimationFrame(animate);
   ctx.clearRect(0,0,innerWidth, innerHeight);
@@ -68,12 +102,19 @@ function animate() {
 init();
 animate();
 
-// Handle window resize
+// Resize Event
 window.addEventListener('resize', function() {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
+  mouse.radius = (canvas.height / 80) * (canvas.width / 80);
   init();
 });
+
+// Remove Mouse Position Periodically
+setInterval(function() {
+  mouse.x = undefined;
+  mouse.y = undefined;
+}, 1000);
 
 // Form Submission Handling
 const form = document.getElementById('document-form');
@@ -127,3 +168,4 @@ form.addEventListener('submit', async (e) => {
     form.reset();
   }
 });
+
