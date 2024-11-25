@@ -120,6 +120,7 @@ setInterval(function() {
 const form = document.getElementById('document-form');
 const loading = document.getElementById('loading');
 const successMessage = document.getElementById('success-message');
+const generateAnotherBtn = document.getElementById('generate-another');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -159,6 +160,7 @@ form.addEventListener('submit', async (e) => {
 
     // Show success message
     successMessage.style.display = 'block';
+    form.style.display = 'none';
   } catch (error) {
     alert(error.message);
     console.error('Error:', error);
@@ -169,3 +171,8 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
+// Generate Another Document Button
+generateAnotherBtn.addEventListener('click', () => {
+  successMessage.style.display = 'none';
+  form.style.display = 'block';
+});
