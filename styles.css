@@ -7,9 +7,9 @@
 
 /* Body and Fonts */
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #1abc9c, #3498db);
-  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: #ecf0f1;
   min-height: 100vh;
   overflow: hidden;
 }
@@ -40,19 +40,20 @@ body {
 .container h1 {
   font-size: 2.5em;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .container p {
   font-size: 1.2em;
   margin-bottom: 40px;
+  color: #bdc3c7;
 }
 
 /* Form Styles */
 form {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(44, 62, 80, 0.85);
   padding: 30px;
   border-radius: 10px;
-  backdrop-filter: blur(10px);
 }
 
 .form-group {
@@ -66,8 +67,8 @@ form {
   padding: 10px 10px 10px 0;
   background: transparent;
   border: none;
-  border-bottom: 2px solid #fff;
-  color: #fff;
+  border-bottom: 2px solid #7f8c8d;
+  color: #ecf0f1;
   font-size: 1em;
   outline: none;
 }
@@ -76,7 +77,7 @@ form {
   position: absolute;
   top: 10px;
   left: 0;
-  color: #fff;
+  color: #7f8c8d;
   font-size: 1em;
   transition: 0.3s;
   pointer-events: none;
@@ -99,7 +100,7 @@ form {
   position: absolute;
   bottom: -2px;
   left: 0;
-  background: #e74c3c;
+  background: #3498db;
   transition: 0.3s;
 }
 
@@ -109,12 +110,17 @@ form {
 .form-group textarea:not(:placeholder-shown) + label {
   top: -20px;
   font-size: 0.9em;
-  color: #e74c3c;
+  color: #3498db;
 }
 
 .form-group input:focus ~ .bar::before,
 .form-group textarea:focus ~ .bar::before {
   width: 100%;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-bottom-color: #3498db;
 }
 
 /* Textarea Styling */
@@ -125,18 +131,19 @@ form {
 
 /* Button Styling */
 .btn {
-  background: #e74c3c;
-  color: #fff;
+  background: #3498db;
+  color: #ecf0f1;
   border: none;
   padding: 15px 30px;
   font-size: 1em;
   border-radius: 50px;
   cursor: pointer;
   transition: 0.3s;
+  margin-top: 10px;
 }
 
 .btn:hover {
-  background: #c0392b;
+  background: #2980b9;
 }
 
 /* Loading Spinner */
@@ -162,4 +169,3 @@ form {
     font-size: 1em;
   }
 }
-
