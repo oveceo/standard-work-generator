@@ -6,12 +6,24 @@
 }
 
 /* Body and Fonts */
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(135deg, #2c3e50, #34495e);
   color: #ecf0f1;
-  min-height: 100vh;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper to enable sticky footer */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Background Animation */
@@ -35,6 +47,7 @@ body {
   max-width: 600px;
   margin: 80px auto;
   text-align: center;
+  flex: 1;
 }
 
 .container h1 {
@@ -232,7 +245,6 @@ footer {
   padding: 15px 0;
   text-align: center;
   width: 100%;
-  margin-top: 40px;
 }
 
 .footer-content {
