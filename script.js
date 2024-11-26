@@ -162,18 +162,6 @@ form.addEventListener('submit', async (e) => {
     successMessage.style.display = 'block';
     form.style.display = 'none';
 
-    // Trigger confetti explosion
-    confetti({
-      particleCount: 150,
-      startVelocity: 30,
-      spread: 360,
-      origin: {
-        x: Math.random(),
-        // since they fall down, start a bit higher than random
-        y: Math.random() - 0.2
-      }
-    });
-
   } catch (error) {
     alert(error.message);
     console.error('Error:', error);
